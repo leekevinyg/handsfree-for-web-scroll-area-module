@@ -12,8 +12,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'zoom.js',
-    library: 'zoom',
+    filename: 'scroll-area.js',
+    library: 'scroll-area',
     libraryTarget: 'umd'
   },
   resolve: {
