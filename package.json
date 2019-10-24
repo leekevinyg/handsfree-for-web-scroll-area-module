@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint ./src ./tests --fix",
+    "lint": "eslint ./src ./tests",
     "build": "NODE_ENV=production webpack --progress",
     "test": "NODE_ENV=testing jest --coverage --ci --runInBand && cat ./coverage/lcov.info | coveralls",
     "test:watch": "NODE_ENV=test jest --watch",
