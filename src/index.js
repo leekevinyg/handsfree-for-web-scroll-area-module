@@ -7,18 +7,18 @@ function scrollArea() { // eslint-disable-line
       commands: [{
         name: 'scroll area',
         action: () => {
-          const allElementsOnPage = Array.from(document.getElementsByTagName("*"));
-          const scrollableElements = allElementsOnPage.filter(element => {
-            const computedStyle = getComputedStyle(element);
-            const canScrollNow = element.scrollHeight > element.clientHeight && 
-              (computedStyle.overflowY === 'auto' || computedStyle.overflowY === 'scroll');
-            return canScrollNow;
-          });
+          const allElementsOnPage = Array.from(document.getElementsByTagName('*'))
+          const scrollableElements = allElementsOnPage.filter((element) => {
+            const computedStyle = getComputedStyle(element)
+            const canScrollNow = element.scrollHeight > element.clientHeight &&
+              (computedStyle.overflowY === 'auto' || computedStyle.overflowY === 'scroll')
+            return canScrollNow
+          })
 
-          for (let i=0, max=scrollableElements.length; i < max; i++) {
-            const scrollableElement = scrollableElements[i];
+          for (let i = 0; i < scrollableElements.length; i++) {
+            const scrollableElement = scrollableElements[i]
             if (!scrollableElement.classList.contains('hands-free-scrollable')) {
-              scrollableElement.className += ' hands-free-scrollable';
+              scrollableElement.className += ' hands-free-scrollable'
             }
           }
 
@@ -35,23 +35,23 @@ function scrollArea() { // eslint-disable-line
       }]
     }, {
       context: 'scroll-area',
-      switchOnSelectElement: (el) => el.classList.contains('hands-free-scrollable'),
+      switchOnSelectElement: el => el.classList.contains('hands-free-scrollable'),
       commands: [{
         name: 'up',
-        action: ({selectedElement}) => {
+        action: ({ selectedElement }) => {
           // TODO scroll smoothly
-          selectedElement.scrollTop -= 100;
+          selectedElement.scrollTop -= 100
         },
         group: 'Scroll Direction',
-        help: 'Scrolls a selected element up',
+        help: 'Scrolls a selected element up'
       }, {
         name: 'down',
-        action: ({selectedElement}) => {
+        action: ({ selectedElement }) => {
           // TODO scroll smoothly
-          selectedElement.scrollTop += 100;
+          selectedElement.scrollTop += 100
         },
         group: 'Scroll Direction',
-        help: 'Scrolls a selected element down',
+        help: 'Scrolls a selected element down'
       }]
     }]
   }

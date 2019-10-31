@@ -13,6 +13,7 @@
       "react/jsx-filename-extension": ["error", { "extensions": [".js"] }],
       "no-underscore-dangle": ["error", { "allow": ["__REDUX_DEVTOOLS_EXTENSION__"] }],
       "comma-dangle": ["error", "never"],
-      "no-param-reassign": ["error", { "props": false }]
+      "no-param-reassign": ["error", { "props": false }],
+      "no-plusplus": [0]
     }
   }
