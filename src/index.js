@@ -6,10 +6,23 @@ function scrollArea() { // eslint-disable-line
       context: 'root',
       commands: [{
         name: 'scroll area',
-        action() {
+        action: () => {
+          const allElementsOnPage = Array.from(document.getElementsByTagName("*"));
+          const scrollableElements = allElementsOnPage.filter(element => {
+            const computedStyle = getComputedStyle(element);
+            const canScrollNow = element.scrollHeight > element.clientHeight && 
+              (computedStyle.overflowY === 'auto' || computedStyle.overflowY === 'scroll');
+            return canScrollNow;
+          });
+
+          for (var i=0, max=scrollableElements.length; i < max; i++) {
+            const scrollableElement = scrollableElements[i];
+            scrollableElement.className += ' hands-free-scrollable';
+          }
+
           return {
             context: 'pickLabel',
-            labels: 'div',
+            labels: '.hands-free-scrollable',
             selectedElementHandler: el => ({
               selectedElement: el
             })
@@ -20,20 +33,24 @@ function scrollArea() { // eslint-disable-line
       }]
     }, {
       context: 'scroll-area',
+      switchOnSelectElement: (el) => el.classList.contains('hands-free-scrollable'),
       commands: [{
         name: 'up',
-        action: () => {},
+        action: ({selectedElement}) => {
+          // TODO scroll smoothly
+          selectedElement.scrollTop -= 100;
+        },
         group: 'Scroll Direction',
         help: 'Scrolls a selected element up',
-        switchToContext: 'root'
       }, {
         name: 'down',
-        action: () => {},
+        action: ({selectedElement}) => {
+          // TODO scroll smoothly
+          selectedElement.scrollTop += 100;
+        },
         group: 'Scroll Direction',
         help: 'Scrolls a selected element down',
-        switchToContext: 'root'
       }]
     }]
   }
 }
-
