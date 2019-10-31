@@ -17,7 +17,9 @@ function scrollArea() { // eslint-disable-line
 
           for (let i=0, max=scrollableElements.length; i < max; i++) {
             const scrollableElement = scrollableElements[i];
-            scrollableElement.className += ' hands-free-scrollable';
+            if (!scrollableElement.classList.contains('hands-free-scrollable')) {
+              scrollableElement.className += ' hands-free-scrollable';
+            }
           }
 
           return {
