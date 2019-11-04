@@ -23,8 +23,9 @@ function scrollArea() { // eslint-disable-line
           }
 
           if (scrollableElements.length === 0) {
-            // TODO send to default scroll context?
-            return {}
+            return {
+              context: 'root'
+            }
           }
 
           return {
