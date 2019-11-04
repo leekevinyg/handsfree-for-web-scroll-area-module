@@ -24,7 +24,7 @@ function scrollArea() { // eslint-disable-line
 
           if (scrollableElements.length === 0) {
             // TODO send to default scroll context?
-            return;
+            return {}
           }
 
           return {
@@ -45,14 +45,14 @@ function scrollArea() { // eslint-disable-line
       commands: [{
         name: 'up',
         action: ({ selectedElement, tools }) => {
-          tools.scroll.up(tools.jQuery(selectedElement));
+          tools.scroll.up(tools.jQuery(selectedElement))
         },
         group: 'Scroll Direction',
         help: 'Scrolls a selected element up'
       }, {
         name: 'down',
         action: ({ selectedElement, tools }) => {
-          tools.scroll.down(tools.jQuery(selectedElement));
+          tools.scroll.down(tools.jQuery(selectedElement))
         },
         group: 'Scroll Direction',
         help: 'Scrolls a selected element down'
