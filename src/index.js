@@ -35,20 +35,19 @@ function scrollArea() { // eslint-disable-line
       }]
     }, {
       context: 'scroll-area',
+      name: 'Scroll Area',
       switchOnSelectElement: el => el.classList.contains('hands-free-scrollable'),
       commands: [{
         name: 'up',
         action: ({ selectedElement, tools }) => {
-          tools.scroll.up(selectedElement)
-          // selectedElement.scrollTop -= 100
+          tools.scroll.up(tools.jQuery(selectedElement));
         },
         group: 'Scroll Direction',
         help: 'Scrolls a selected element up'
       }, {
         name: 'down',
         action: ({ selectedElement, tools }) => {
-          tools.scroll.down(selectedElement)
-          // selectedElement.scrollTop += 100
+          tools.scroll.down(tools.jQuery(selectedElement));
         },
         group: 'Scroll Direction',
         help: 'Scrolls a selected element down'
