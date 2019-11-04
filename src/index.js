@@ -38,17 +38,17 @@ function scrollArea() { // eslint-disable-line
       switchOnSelectElement: el => el.classList.contains('hands-free-scrollable'),
       commands: [{
         name: 'up',
-        action: ({ selectedElement }) => {
-          // TODO scroll smoothly
-          selectedElement.scrollTop -= 100
+        action: ({ selectedElement, tools }) => {
+          tools.scroll.up(selectedElement);
+          //selectedElement.scrollTop -= 100
         },
         group: 'Scroll Direction',
         help: 'Scrolls a selected element up'
       }, {
         name: 'down',
-        action: ({ selectedElement }) => {
-          // TODO scroll smoothly
-          selectedElement.scrollTop += 100
+        action: ({ selectedElement, tools }) => {
+          tools.scroll.down(selectedElement);
+          //selectedElement.scrollTop += 100
         },
         group: 'Scroll Direction',
         help: 'Scrolls a selected element down'
