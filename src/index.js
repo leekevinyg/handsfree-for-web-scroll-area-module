@@ -24,7 +24,7 @@ function scrollArea() { // eslint-disable-line
 
           if (scrollableElements.length === 0) {
             return {
-              context: 'root'
+              context: 'scroll-area',
             }
           }
 
@@ -43,17 +43,26 @@ function scrollArea() { // eslint-disable-line
       context: 'scroll-area',
       name: 'Scroll Area',
       switchOnSelectElement: el => el.classList.contains('hands-free-scrollable'),
+      setup: () => ({ showCommandList: true }),
       commands: [{
         name: 'up',
         action: ({ selectedElement, tools }) => {
-          tools.scroll.up(tools.jQuery(selectedElement))
+          if (selectedElement) {
+            tools.scroll.up(tools.jQuery(selectedElement))
+          } else {
+            tools.scroll.up(tools.jQuery('body'))
+          }
         },
         group: 'Scroll Direction',
         help: 'Scrolls a selected element up'
       }, {
         name: 'down',
         action: ({ selectedElement, tools }) => {
-          tools.scroll.down(tools.jQuery(selectedElement))
+          if (selectedElement) {
+            tools.scroll.down(tools.jQuery(selectedElement))
+          } else {
+            tools.scroll.down(tools.jQuery('body'))
+          }
         },
         group: 'Scroll Direction',
         help: 'Scrolls a selected element down'
