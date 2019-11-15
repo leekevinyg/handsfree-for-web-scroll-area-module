@@ -24,7 +24,7 @@ function scrollArea() { // eslint-disable-line
 
           if (scrollableElements.length === 0) {
             return {
-              context: 'scroll-area',
+              context: 'scroll-area'
             }
           }
 
