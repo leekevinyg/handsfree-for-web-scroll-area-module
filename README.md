@@ -6,6 +6,7 @@ Commands for scrolling a particular element on a page hands free
 
 ## Install
 
+NOTE: This module has not been pushed to npm yet!
 ```
 npm install --save handsfree-for-web-scroll-area-module
 ```
