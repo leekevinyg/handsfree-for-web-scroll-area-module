@@ -6,7 +6,7 @@ function scrollArea() { // eslint-disable-line
       context: 'root',
       commands: [{
         name: 'scroll area',
-        action: () => {
+        action: ({ tools }) => {
           const allElementsOnPage = Array.from(document.getElementsByTagName('*'))
           const scrollableElements = allElementsOnPage.filter((element) => {
             const computedStyle = getComputedStyle(element)
@@ -22,10 +22,10 @@ function scrollArea() { // eslint-disable-line
             }
           }
 
-          if (scrollableElements.length === 0) {
+          if (scrollableElements.length === 0 || scrollableElements.length === 1) {
             return {
               context: 'scroll-area',
-              selectedElement: document.body
+              selectedElement: tools.jQuery('html', 'body')
             }
           }
 
